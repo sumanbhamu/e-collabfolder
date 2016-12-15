@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+	<!-- var is declared -->
+	<var name="user" class="com.suman.ecom.model.User" />
+	<!-- Executed when webFlow is triggered -->
+	<on-start>
+		<evaluate expression="registrationHandler.initFlow()" result="flowScope.us" />
+	</on-start>
+
+	<view-state id="start" view="register" model="flowScope.us">
+		<transition on="submit" to="validate" />
+	</view-state>
+
+	<!-- validate is a function when clicked submit -->
+	<!-- the "us" is same as in register commandName -->
+	<action-state id="validate">
+		<evaluate expression="registrationHandler.validateDetails(us,messageContext)"></evaluate>
+		<transition on="success" to="confirmDetails" />
+		<transition on="failure" to="start" />
+	</action-state>
+
+	<!-- id - state, view -page, us-commandname in register, edit and submit 
+		r two fields in confirmDetails -->
+	<view-state id="confirmDetails" view="confirmDetails" model="flowScope.us">
+		<transition on="edit" to="start" />
+		<transition on="submit" to="login">
+			<evaluate expression="us.setRole('ROLE_USER')"></evaluate>
+			<evaluate expression="us.setEnabled(true)"></evaluate>
+			<evaluate expression="userDAO.saveOrUpdate(us)"></evaluate>
+		</transition>
+	</view-state>
+
+
+	<end-state id="login" view="login" />
+
+	<end-state id="toIndex" view="externalRedirect:contextRelative:index.jsp" />
+
+	<end-state id="toException"
+		view="externalRedirect:contextRelative:exception.jsp" />
+
+	<!-- these events are available in every state -->
+	<global-transitions>
+		<transition on="index" to="toIndex" />
+		<transition on="error" to="toException" />
+	</global-transitions>
+</flow>
