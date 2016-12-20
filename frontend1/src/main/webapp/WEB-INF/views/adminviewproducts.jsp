@@ -114,7 +114,7 @@
       <td><a href="updateproduct&{{p1.prod_id}}">Edit</a></td> 
 
 <!-- viewing product individual details (using id) -->
- <td><a href="viewdetails?id={{p1.prod_id}}">View</a>
+ <!-- <td><a href="viewdetails?id={{p1.prod_id}}">View</a> -->
 				</tr>
 			</tbody>
 		</table>

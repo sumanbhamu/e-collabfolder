@@ -2,6 +2,7 @@ package com.suman.ecom.dao;
 
 import java.util.List;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -81,6 +82,70 @@ public class UserDAOImpl implements UserDAO {
 		}
 
 		return ulist.get(0);
+	}
+
+	@Transactional
+	public List<User> checksignin(String id) {
+		String hql = "from User user_id where emailid=" + id;
+		Session s = sessionFactory.getCurrentSession();
+		Transaction tx = s.beginTransaction();
+		org.hibernate.Query query = s.createQuery(hql);
+		List<User> all = query.list();
+		tx.commit();
+		return all;
+	}
+
+	@Transactional
+	public User get(int id) {
+
+		// select * from user where user_id=selected id
+		String hql = "from User where user_id=" + id;
+
+		// hibernate query
+
+		Session s = sessionFactory.getCurrentSession();
+		Transaction t = s.beginTransaction();
+
+		Query query = s.createQuery(hql);
+
+		// Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		List<User> list = query.list();
+		// t.commit();
+		if (list == null) {
+			return null;
+
+		} else {
+
+			System.out.println("geeeet user");
+
+			return list.get(0);
+
+		}
+
+	}
+
+	// ...................
+
+	@Transactional
+	public User getbyid(int id) {
+
+		try {
+			String hql = "from User where user_id=" +id;
+			Session s = sessionFactory.getCurrentSession();
+			Transaction tx = s.beginTransaction();
+			org.hibernate.Query query = s.createQuery(hql);
+			List<User> list = query.list();
+			tx.commit();
+			if (list == null)
+
+				return null;
+			else {
+				return list.get(0);
+			}
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 }

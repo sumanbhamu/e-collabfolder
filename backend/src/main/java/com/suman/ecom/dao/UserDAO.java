@@ -20,5 +20,8 @@ public interface UserDAO {
 	public User get(String name);
 
 	public List<User> list();
+	public List<User> checksignin(String nam);
+	
+	public User getbyid(int id);
 
 }

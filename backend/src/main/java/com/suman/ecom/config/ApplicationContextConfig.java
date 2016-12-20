@@ -14,6 +14,8 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.suman.ecom.dao.CartDAO;
+import com.suman.ecom.dao.CartDAOImpl;
 import com.suman.ecom.dao.CategoryDAO;
 import com.suman.ecom.dao.CategoryDAOImpl;
 import com.suman.ecom.dao.ProductDAO;
@@ -142,5 +144,23 @@ public class ApplicationContextConfig {
 	  @Bean(name = "supplier") public Supplier getSupplier() {
 	  System.out.println("supplier wired"); return new Supplier(); }
 	 
+	// cart
+		
+		  @Autowired
+		  
+		  @Bean(name = "cartDAO") 
+		  public CartDAO getCartDAO(SessionFactory sessionFactory) {
+		  
+		  System.out.println("cart dao wired "); 
+		  return new CartDAOImpl(sessionFactory);
+		  }
+		  
+		  @Autowired
+		  
+		  @Bean(name = "cart") 
+		  public Cart getCart() {
+		  System.out.println("cart wired"); 
+		  return new Cart(); }
+		 
 
 }

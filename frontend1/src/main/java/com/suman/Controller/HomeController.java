@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.suman.ecom.dao.UserDAO;
+import com.suman.ecom.model.Product;
 import com.suman.ecom.model.User;
 
 @Controller
@@ -27,7 +28,12 @@ public class HomeController {
 
 	@Autowired
 	User user;
-
+	
+	
+	@Autowired
+	Product product;
+	
+	
 	@RequestMapping("/")
 	public String showHome() {
 		return "index";
@@ -92,7 +98,8 @@ public class HomeController {
 		user.setRole("ROLE_USER");
 
 		if (user.getConfirmpassword().equals(user.getPassword())) {
-			userDAO.saveOrUpdate(user);
+			
+						userDAO.saveOrUpdate(user);
 		}
 
 		return "login";
@@ -115,12 +122,19 @@ public class HomeController {
 
 		user = userDAO.get(id);
 		int x = user.getUser_id();
+		session.setAttribute("email",user.getEmailid());
 		session.setAttribute("loggedInUser", user.getUsername());
 
+		System.out.println("x value is"+x);
 		session.setAttribute("loggedInUserID", x);
 
 		session.setAttribute("LoggedIn", "true");
 
+		
+		
+		
+		
+		
 		@SuppressWarnings("unchecked")
 		/* getting values from database */
 		Collection<GrantedAuthority> authorities = (Collection<GrantedAuthority>) SecurityContextHolder.getContext()
@@ -132,7 +146,7 @@ public class HomeController {
 			if (authority.getAuthority().equals(role)) {
 				System.out.println(role);
 
-				return "index";
+				return "viewproducts";
 			} else {
 				session.setAttribute("isAdmin", "true");
 			}

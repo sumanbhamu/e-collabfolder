@@ -114,4 +114,34 @@ public class ProductDAOImpl implements ProductDAO {
 
 	}
 
+	
+	/*/////////////////////////////////////////////
+*/
+	/*@Transactional
+	public Product getid(int id) {
+
+		// select * from product where prod_id=selected id
+		String hql = "from Product quantity where prod_id=" + id;
+
+		 Session s = sessionFactory.getCurrentSession(); Transaction t =
+		  s.beginTransaction();
+		 
+		 Query query =s.createQuery(hql);
+		 
+		//Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		List<Product> list = query.list();
+		//t.commit();
+		if (list == null) {
+			return null;
+
+		} else {
+
+			System.out.println("geeeet product");
+
+			return list.get(0);
+
+		}
+
+	}
+*/
 }

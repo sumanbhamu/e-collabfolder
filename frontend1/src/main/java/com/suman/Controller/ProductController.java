@@ -7,9 +7,12 @@ import java.nio.file.Paths;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -29,6 +32,7 @@ import com.suman.ecom.dao.SupplierDAO;
 import com.suman.ecom.model.Category;
 import com.suman.ecom.model.Product;
 import com.suman.ecom.model.Supplier;
+import com.suman.ecom.model.User;
 
 @Controller
 
@@ -39,6 +43,13 @@ public class ProductController {
 
 	@Autowired
 	Product product;
+	
+	@Autowired
+	User user;
+	
+	@Autowired
+	private JavaMailSender mailSender;
+
 
 	@Autowired
 	CategoryDAO categoryDAO;
@@ -119,14 +130,15 @@ public class ProductController {
 	}
 
 	@RequestMapping(value = "/addprod", method = RequestMethod.POST)
-	public String ShowAddProduct(@Valid @ModelAttribute("product") Product prod, Model model, BindingResult result,
+	public String ShowAddProduct(@Valid @ModelAttribute("product") Product prod,
+			Model model, BindingResult result,
 			HttpServletRequest request) throws IOException {
 		System.out.println(prod.getProd_name());
 		System.out.println("image uploaded");
 		System.out.println("myproduct controller called");
 		MultipartFile image = prod.getImg();
 		Path path;// belong to nio package
-		path = Paths.get("E:/E-Commerce/frontend1/src/main/webapp/resources/images/" + prod.getProd_name() + ".jpg");
+		path = Paths.get("C:/Users/user.main/git/e-collabfolder/frontend1/src/main/webapp/resources/images/" + prod.getProd_name() + ".jpg");
 		System.out.println("Path=" + path);
 		System.out.println("File name" + prod.getImg().getOriginalFilename());
 		if (image != null && !image.isEmpty()) {
@@ -148,10 +160,34 @@ public class ProductController {
 			return "addproduct";
 		}
 
+		HttpSession session=request.getSession(false);
+		String email1=(String)session.getAttribute("email");
+		
+		String usernaam=(String)session.getAttribute("loggedInUser");
 		model.addAttribute("message", "product added successfully");
 		model.addAttribute("productList", productDAO.list());
 		model.addAttribute("categoryList", categoryDAO.list());
 		model.addAttribute("supplierList", supplierDAO.list());
+		
+		String recipientAddress=email1;
+		String subject="User Registration";
+		String message="User Registered successfully\n"+
+		"The Details ..r.."+"\n User Name:"+usernaam+"\n Phone no:"+user.getPhno();
+		
+		//prints on console
+		System.out.println("Too:"+recipientAddress);
+		System.out.println("Subject:"+subject);
+		System.out.println("Message:"+message);
+		
+		//creats a simple e-mail obj.
+		SimpleMailMessage email=new SimpleMailMessage();
+		email.setTo(recipientAddress);
+		email.setSubject(subject);
+		email.setText(message);
+		
+		//sends the e-mail
+		mailSender.send(email);			
+
 
 		return "adminviewproducts";
 	}

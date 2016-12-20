@@ -18,7 +18,7 @@ import org.springframework.stereotype.Component;
 @Table
 @Component
 
-public class User implements Serializable {
+public class User implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 

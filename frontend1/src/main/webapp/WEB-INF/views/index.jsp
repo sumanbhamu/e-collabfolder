@@ -133,4 +133,17 @@ body {
 	</center>
 	<br>
 	<br>
+	</form>
+<c:if test="${isLoggedInUserId==true}">
+<div id="error">${errorMessage}</div>
+<%@ include file="./login.jsp"%>
+</c:if>
+
+<c:if test="${isLoggedInUserId==true}">
+<div id="success">${successmsg}</div>
+<%@ include file="./login.jsp"%>
+</c:if>
+
+	</body>
+	
 	<%@include file="footer.jsp"%>

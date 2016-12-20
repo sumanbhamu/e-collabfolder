@@ -1,4 +1,6 @@
 <!-- Using angular js -->
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <%@ include file="header.jsp"%>
 <div>
 	<div class="container">
@@ -21,7 +23,13 @@
 
 					<td><img src="resources/images/${product.prod_name}.jpg"
 						style="height: 100px; width: 100px;"></td>
-					<td><a href="cart">Add to cart</a></td>
+					<td><%-- <a href="buy${user_id}&${prod_id}">Add to cart</a> --%>
+					
+					<form  method="POST" action="buy${product.prod_id}" >
+<input type="submit" value="Buy" class="btn btn-warning shadow" style="font-size:19px;margin:30px 30px"/>
+</form>
+					
+					</td>
 				</tr>
 
 			</table>

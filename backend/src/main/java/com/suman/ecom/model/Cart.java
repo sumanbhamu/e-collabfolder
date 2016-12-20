@@ -16,9 +16,9 @@ import org.springframework.stereotype.Component;
 public class Cart {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
-	private int quatity;
+	private int quantity;
 	private int price;
 	private int user_id;
 	private int prod_id;
@@ -43,12 +43,12 @@ public class Cart {
 		this.id = id;
 	}
 
-	public int getQuatity() {
-		return quatity;
+	public int getQuantity() {
+		return quantity;
 	}
 
-	public void setQuatity(int quatity) {
-		this.quatity = quatity;
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 
 	public int getPrice() {
