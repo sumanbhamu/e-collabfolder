@@ -59,10 +59,15 @@ public class UserDAOImpl implements UserDAO {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
+	@Transactional
 	public List<User> list() {
-		// TODO Auto-generated method stub
-		return null;
+		String hql = "from User";
+		Session s = sessionFactory.getCurrentSession();
+		Transaction tx = s.beginTransaction();
+		org.hibernate.Query query = s.createQuery(hql);
+		List<User> all=query.list();
+		tx.commit();
+		return all;
 	}
 
 	@Transactional

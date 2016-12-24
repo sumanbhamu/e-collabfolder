@@ -20,19 +20,20 @@ public class Cart {
 	private int id;
 	private int quantity;
 	private int price;
-	private int user_id;
-	private int prod_id;
+	
+	
 	
 	
 	
 	@ManyToOne
 	@JoinColumn(name="user_id",insertable=false,updatable=false)
 	private User cartuser;
+	private int user_id;
 	
 	@ManyToOne
 	@JoinColumn(name="prod_id",insertable=false,updatable=false)
 	private Product cartproduct;
-
+	private int prod_id;
 
 	
 	public int getId() {

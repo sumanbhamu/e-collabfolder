@@ -54,7 +54,7 @@ public class AdminController {
 		int s = Integer.parseInt(id);
 
 		ModelAndView mv = new ModelAndView("mycart");
-		mv.addObject("mycartList", cartDAO.listcartproducts(s));
+		mv.addObject("cartList", cartDAO.listcartproducts(s));
 		// mv.addObject("cartprice", cartDAO.totalprice(id));
 		return mv;
 	}
@@ -99,12 +99,13 @@ public class AdminController {
 		session.setAttribute("ppprice", product.getProd_price());
 		int pprice=(Integer)session.getAttribute("ppprice");
 		
-		int cartsize=cartDAO.listcartproducts(x1).size();
+		/*int cartsize=cartDAO.listcartproducts(x1).size();
 			if(cartsize==0)
 			{
 				model.addAttribute("errormessage","u do not hv any products in cart!!!!");
 			}
-			
+		*/	
+		
 			
 			cart.setQuantity(2);
 			cart.setProd_id(pid);
@@ -113,7 +114,7 @@ public class AdminController {
 			cart.setCartproduct(product);
 			cart.setPrice(pprice);
 
-			
+			cartDAO.save(cart);
 			
 
 			System.out.println("ading to 1cartttttttt..." + cart.getQuantity());
@@ -124,28 +125,40 @@ public class AdminController {
 			System.out.println("price...."+ product.getProd_price()+"."
 					+ ".....\n............pprice..."+pprice);
 
-			cartDAO.save(cart);
+			
 			
 
 			
 			session.setAttribute("cartpic11",
 					 cart.getCartproduct().getProd_name());
-			
-			ModelAndView mv = new ModelAndView("redirect:/mycart");
+			System.out.println("cartpic...."+cart.getCartproduct().getProd_name());
 			
 			System.out.println("ading to cart");
 			
+			//model.addAttribute("getList",cartDAO.getbyid(x1));
+			/*model.addAttribute("cartList"+cartDAO.listcartproducts(x1));
+			model.addAttribute("productList", productDAO.list());
+			model.addAttribute("userList", userDAO.list());
+			*/
+			ModelAndView mv = new ModelAndView("redirect:/mycart");
+			mv.addObject("cartList",cartDAO.listcartproducts(x1));
+			/*mv.addObject("productList", productDAO.list());
+			mv.addObject("userList", userDAO.list());
+			*/
 			
 			
-
-			mv.addObject("mycartList", cartDAO.listcartproducts(x1));
-			session.setAttribute("cartvalue", cartDAO.totalproducts(x1));
-			// mv.addObject("cartprice", cartDAO.totalprice(pid));
-			mv.addObject("cartpic",
-			 cart.getCartproduct().getProd_name());
-			System.out.println("cartpic...."+cart.getCartproduct().getProd_name());
+			//session.setAttribute("cartvalue1", cartDAO.totalproducts(x1));
+			mv.addObject("cartvalue",cartDAO.totalproducts(x1));
 			
-			mv.addObject("cartmessage1", " has been added to your cart");
+			
+			/*Cart cart1 = cartDAO.getbyid(x1);*/
+			/*model.addAttribute("displayCart",true);
+			*/
+			/*System.out.println(".....SUMAN......"+cartDAO.listcartproducts(x1));
+			
+			System.out.println("suman..........get..."+cartDAO.getbyid(x1));
+			*/
+			//mv.addObject("cartmessage1", " has been added to your cart");
 			
 			
 			return mv;
@@ -153,9 +166,9 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "/mycart{id}")
-	public ModelAndView viewmycart1(@PathVariable("id") String id) {
+	public ModelAndView viewmycart1(@PathVariable("id") int id) {
 		ModelAndView mv = new ModelAndView("mycart");
-		// mv.addObject("mycartList", cartDAO.listcartproducts(id));
+		 mv.addObject("cartList", cartDAO.listcartproducts(id));
 		// mv.addObject("cartprice", cartDAO.totalprice(id));
 		return mv;
 

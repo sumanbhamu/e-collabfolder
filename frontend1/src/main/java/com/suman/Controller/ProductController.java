@@ -118,6 +118,7 @@ public class ProductController {
 		model.addAttribute("categoryList", categoryDAO.list());
 		model.addAttribute("supplierList", supplierDAO.list());
 
+		System.out.println("product adddinjnsj list..."+productDAO.list());
 		return mv;
 	}
 

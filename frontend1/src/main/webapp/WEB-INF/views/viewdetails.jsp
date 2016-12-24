@@ -4,7 +4,7 @@
 <%@ include file="header.jsp"%>
 <div>
 	<div class="container">
-		<div ng-app="myApp" ng-coontroller="dataCtrl">
+		
 			<hr>
 			<table class="table table-striped">
 				<tr>
