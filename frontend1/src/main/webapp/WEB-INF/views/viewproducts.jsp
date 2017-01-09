@@ -158,6 +158,77 @@ img {
 					<div class="panel-footer">Buy accessories and get a gift card</div>
 				</div>
 			</div>
+			<br>
+			<div class="col-sm-4">
+				<div class="panel panel-primary">
+					<div class="panel-heading">NEW YEAR DEAL</div>
+					<div class="panel-body">
+						<img src="resources/images/bags.jpg" class="img-rounded"
+							alt="Image">
+					</div>
+					<div class="panel-footer">Buy bags and get a gift card</div>
+				</div>
+			</div>
+			
+			<div class="col-sm-4">
+				<div class="panel panel-primary">
+					<div class="panel-heading">NEW YEAR DEAL</div>
+					<div class="panel-body">
+						<img src="resources/images/sm.jpg" class="img-rounded"
+							alt="Image">
+					</div>
+					<div class="panel-footer">Buy bags and get a gift card</div>
+				</div>
+			</div>
+			
+			
+			<div class="col-sm-4">
+				<div class="panel panel-primary">
+					<div class="panel-heading">NEW YEAR DEAL</div>
+					<div class="panel-body">
+						<img src="resources/images/mm.jpg" class="img-rounded"
+							alt="Image">
+					</div>
+					<div class="panel-footer">Buy bags and get a gift card</div>
+				</div>
+			</div>
+			
+			<br>
+			<div class="col-sm-4">
+				<div class="panel panel-primary">
+					<div class="panel-heading">NEW YEAR DEAL</div>
+					<div class="panel-body">
+						<img src="resources/images/bbb.jpg" class="img-rounded"
+							alt="Image">
+					</div>
+					<div class="panel-footer">Buy dresses and get a gift card</div>
+				</div>
+			</div>
+			
+			
+			<div class="col-sm-4">
+				<div class="panel panel-primary">
+					<div class="panel-heading">NEW YEAR DEAL</div>
+					<div class="panel-body">
+						<img src="resources/images/rrr.jpg" class="img-rounded"
+							alt="Image">
+					</div>
+					<div class="panel-footer">Buy dresses and get a gift card</div>
+				</div>
+			</div>
+			
+			
+			<div class="col-sm-4">
+				<div class="panel panel-primary">
+					<div class="panel-heading">NEW YEAR DEAL</div>
+					<div class="panel-body">
+						<img src="resources/images/bb.jpg" class="img-rounded"
+							alt="Image">
+					</div>
+					<div class="panel-footer">Buy dresses and get a gift card</div>
+				</div>
+			</div>
+			
 		</div>
 	</div>
 	<br>

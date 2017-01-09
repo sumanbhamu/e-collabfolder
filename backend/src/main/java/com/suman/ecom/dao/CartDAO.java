@@ -15,8 +15,8 @@ public interface CartDAO {
 	
 	public List<Cart> listcartproducts(int id);
 	
-	public int totalproducts(int id);
-
+	/*public int totalproducts(int id);
+*/
 	public int totalprice(int id);
 	
 	/*public boolean orphanremoval(String id);*/

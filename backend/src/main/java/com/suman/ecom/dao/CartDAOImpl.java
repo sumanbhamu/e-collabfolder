@@ -7,27 +7,31 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.suman.ecom.model.Cart;
 
+@Repository("cartDAO")
 public class CartDAOImpl implements CartDAO {
 	@Autowired
 	ProductDAO productDAO;
-	
+
 	@Autowired
 	UserDAO userDAO;
+
+	@Autowired
+	Cart cart;
 
 	@Autowired
 	private SessionFactory sessionFactory;
 
 	public CartDAOImpl(SessionFactory sessionFactory) {
-	
+
 		this.sessionFactory = sessionFactory;
-		
+
 	}
 
-	
 	@Transactional
 	public boolean save(Cart cart) {
 		try {
@@ -35,9 +39,9 @@ public class CartDAOImpl implements CartDAO {
 			Transaction t = s.beginTransaction();
 			s.saveOrUpdate(cart);
 			t.commit();
-			//sessionFactory.getCurrentSession().save(cart);
+			// sessionFactory.getCurrentSession().save(cart);
 			System.out.println("saving into cart...impl");
-			
+
 			return true;
 		} catch (HibernateException e) {
 
@@ -85,9 +89,9 @@ public class CartDAOImpl implements CartDAO {
 			org.hibernate.Query query = s.createQuery(hql);
 			List<Cart> list = query.list();
 			tx.commit();
-			if (list == null){
-				return null;}
-			else {
+			if (list == null) {
+				return null;
+			} else {
 				System.out.println("getting by id product.......in impl");
 
 				return list.get(0);
@@ -96,31 +100,6 @@ public class CartDAOImpl implements CartDAO {
 			e.printStackTrace();
 			return null;
 		}
-	}
-@Transactional
-	public int totalproducts(int id) {
-		try {
-			String hql = "from Cart where user_id=" +id;
-			Session s = sessionFactory.getCurrentSession();
-			Transaction tx = s.beginTransaction();
-			org.hibernate.Query query = s.createQuery(hql);
-			List<Cart> all = query.list();
-			tx.commit();
-			int k = 0;
-			for (Cart temp : all) {
-				k = k + 1;
-			}
-			System.out.println("total products in ......impl");
-			return k;
-		} catch (HibernateException e) {
-			e.printStackTrace();
-			return 0;
-		}
-	}
-
-	public int totalprice(int id) {
-		// TODO Auto-generated method stub
-		return 0;
 	}
 
 	@Transactional
@@ -140,10 +119,9 @@ public class CartDAOImpl implements CartDAO {
 
 	}
 
-
 	public List<Cart> listcartproducts(int id) {
 		try {
-			String hql = "from Cart where user_id=" +id;
+			String hql = "from Cart where user_id=" + id;
 			Session s = sessionFactory.getCurrentSession();
 			Transaction tx = s.beginTransaction();
 			org.hibernate.Query query = s.createQuery(hql);
@@ -157,4 +135,26 @@ public class CartDAOImpl implements CartDAO {
 		}
 	}
 
+	@Transactional
+	public int totalprice(int id) {
+
+		try {
+			String hql = "from Cart where user_id=" + id;
+			Session s = sessionFactory.getCurrentSession();
+			Transaction tx = s.beginTransaction();
+			org.hibernate.Query query = s.createQuery(hql);
+			List<Cart> all = query.list();
+			tx.commit();
+			int sum = 0;
+			for (Cart temp : all) {
+				sum = sum + temp.getPrice();
+			}
+			return sum;
+		} catch (HibernateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("...unable to retrieve total price in impl...");
+			return 0;
+		}
+	}
 }

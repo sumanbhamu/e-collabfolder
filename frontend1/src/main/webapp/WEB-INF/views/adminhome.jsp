@@ -1,8 +1,8 @@
 
 <%@ page language="java" contentType="text/html; charset=windows-1256"
 	pageEncoding="windows-1256"%>
-	<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-	
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -20,19 +20,23 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+
+
+
 <!-- adding internal style to carousel -->
 <style>
-.navbar{
-background-color: lightgreen;
+.navbar {
+	background-color: lightgreen;
 }
+
 body {
 	background-image: url("resources/images/aaa.jpg");
 }
 </style>
 <body>
-<td>welcome ${loggedInUser}</td>
+	<h4>welcome ${loggedInUser}</h4>
 
-	<h4>Welcome Admin</h4>
+
 	<!-- adding menu bar(nav bar) -->
 	<nav class="navbar navbar-inverse">
 	<div class="container-fluid">
@@ -48,7 +52,8 @@ body {
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="home">Home</a></li>
 
-				<li class="dropdown"><a class="dropdown-toggle"
+
+				<li class="dropdown"><a class="dropdown-toggle" id="triangle"
 					data-toggle="dropdown" href="addproduct">Products <span
 						class="caret"></span></a>
 					<ul class="dropdown-menu">
@@ -57,15 +62,14 @@ body {
 
 					</ul></li>
 
+
+
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="addcategory">Category <span
 						class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="addcategory">Add</a></li>
-						<li><a href="#">Update</a></li>
-						<li><a href="#">Delete</a></li>
-						<li><a href="#">View All</a></li>
-
+						
 					</ul></li>
 
 				<li class="dropdown"><a class="dropdown-toggle"
@@ -73,29 +77,24 @@ body {
 						class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="addsupplier">Add</a></li>
-						<li><a href="#">Update</a></li>
-						<li><a href="#">Delete</a></li>
-						<li><a href="#">View All</a></li>
-
+						
 					</ul></li>
 
 
 			</ul>
-<c:choose>
-				
-<c:when test="${not empty loggedInUser}">
-					
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="perform_logout"><span
-						class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-			</ul>
-			</c:when>
+			<c:choose>
+
+				<c:when test="${not empty loggedInUser}">
+
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="perform_logout"><span
+								class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+					</ul>
+				</c:when>
 			</c:choose>
-				
+
 		</div>
 	</div>
 	</nav>
 
-	<div class="container">
-</body>
-</html>
+	<!-- <div class="container"> -->

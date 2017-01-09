@@ -20,11 +20,7 @@ public class Cart {
 	private int id;
 	private int quantity;
 	private int price;
-	
-	
-	
-	
-	
+		
 	@ManyToOne
 	@JoinColumn(name="user_id",insertable=false,updatable=false)
 	private User cartuser;

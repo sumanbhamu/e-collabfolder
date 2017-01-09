@@ -70,7 +70,7 @@ body {
 						<h3>
 							<div class="carousel-caption">
 								<h3>A fresh approach to shopping</h3>
-							</div>
+							</div></h3>
 					</div>
 				</div>
 
@@ -133,7 +133,7 @@ body {
 	</center>
 	<br>
 	<br>
-	</form>
+	
 <c:if test="${isLoggedInUserId==true}">
 <div id="error">${errorMessage}</div>
 <%@ include file="./login.jsp"%>

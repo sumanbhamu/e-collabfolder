@@ -7,7 +7,7 @@ body {
 }
 </style>
 
-<div class="content" style="text-align:center;">
+<div class="content" style="text-align: center;">
 	<fieldset>
 		<legend>Confirm Details</legend>
 		<!-- for triggering webflow events using links,
@@ -32,6 +32,9 @@ body {
 			<input name="_eventId_edit" type="submit" value="Edit" />
 			<input name="_eventId_submit" type="submit" value="Confirm Details" />
 			<br />
+
+
+
 		</form:form>
 	</fieldset>
 </div>
