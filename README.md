@@ -18,13 +18,16 @@ The different modules in this project are: 1.User 2.Supplier 3.Product 4.Categor
 5.Bootstrap
 
 ####Database:
-H2 database
+H2 database <a href="http://www.h2database.com/html/download.html">Download here</a>
 
 ####Server:
-Apache Tomcat 8
+Apache Tomcat 8 <a href="https://tomcat.apache.org/download-80.cgi">Download here</a>
 
 ###IDE:
-Eclipse
+Eclipse <a href="https://eclipse.org/downloads/" >Download here</a>
    
 ####JDK 1.8
 To download jdk <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">click here</a>
+
+
+
