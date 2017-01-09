@@ -11,8 +11,8 @@ The different users are:
 
 Technologies used:
 
-1.Spring
-2.Hibernate
+1.Spring 4
+2.Hibernate 5
 3.JSP
 4.CSS 
 5.Bootstrap
@@ -21,6 +21,7 @@ Database:
 H2 database
 
 Server:
-Apache Tomcat
+Apache Tomcat 8
 
+IDE:Eclipse
    
