@@ -7,7 +7,7 @@ Fashion Spot is a leading digital media, marketing and sales
 			maintaining quality.
 
 The different modules in this project are: 1.User 2.Supplier 3.Product 4.Category 5.Cart 
-The different users are:
+
 
 ####Technologies used:
 
