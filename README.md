@@ -9,7 +9,7 @@ Fashion Spot is a leading digital media, marketing and sales
 The different modules in this project are: 1.User 2.Supplier 3.Product 4.Category 5.Cart 
 The different users are:
 
-Technologies used:
+####Technologies used:
 
 1.Spring 4
 2.Hibernate 5
@@ -17,11 +17,12 @@ Technologies used:
 4.CSS 
 5.Bootstrap
 
-Database:
+####Database:
 H2 database
 
-Server:
+####Server:
 Apache Tomcat 8
 
-IDE:Eclipse
+###IDE:
+Eclipse
    
